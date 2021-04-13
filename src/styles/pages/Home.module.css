@@ -1,6 +1,11 @@
+.homeContainer {
+    display: flex;
+}
+
 .container {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     height: 100vh;
     margin: 0 auto;
     max-width: 992px;
