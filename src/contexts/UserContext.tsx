@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 import { LevelUpModal } from '../components/LevelUpModal';
-import { TwitterThumb } from '../components/TwitterThumb';
 
 import challenges from '../../challenges.json';
 
