@@ -3,6 +3,7 @@
     background: rgba(242, 243, 245, 0.8);
     bottom: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     left: 0;
     position: fixed;

@@ -1,0 +1,26 @@
+.menuButtonContainer {
+    align-items: center;
+    display: flex;
+    height: 3.5rem;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.menuButtonContainer:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.menuButtonContainer:not(:first-child) {
+    margin-top: 0.5rem;
+}
+
+.menuButtonIndicator {
+    background: var(--blue);
+    border-radius: 0 5px 5px 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 5px
+}

@@ -1,0 +1,23 @@
+.container {
+    align-items: center;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 2rem 0;
+    width: 7rem;
+}
+
+.menu {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+}
+
+.logoutButton {
+    border: none;
+    background: transparent;
+}
