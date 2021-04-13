@@ -1,0 +1,58 @@
+.loginFormContainer {
+    align-items: flex-start;
+    display: flex;
+    flex-basis: 35%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.loginFormContainer .logo {
+    margin-bottom: 7rem;
+}
+
+.loginFormContainer strong {
+    color: var(--white);
+    font: 600 2.25rem 'Inter', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.loginFormContainer p {
+    color: var(--blue-text);
+    display: flex;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 16rem;
+}
+
+.loginFormContainer p img {
+    margin-right: 1rem;
+}
+
+.loginFormContainer a {
+    align-items: center;
+    background: var(--blue-dark);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    height: 5rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
+}
+
+.loginFormContainer a .labelGithub {
+    background: linear-gradient(90deg, var(--blue-dark) 0%, rgba(73, 83, 184, 0.2) 100%);
+    color: var(--white);
+    text-align: start;
+    width: 21.25rem;
+}
+
+.loginFormContainer a .arrowGo {
+    align-items: center;
+    background: var(--green);
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    font-size: 0;
+    height: 5rem;
+    justify-content: center;
+    width: 5rem;
+}

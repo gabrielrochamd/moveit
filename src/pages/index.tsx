@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import Head from 'next/head'
 
 import { ChallengeBox } from '../components/ChallengeBox';
@@ -6,25 +5,22 @@ import { CompletedChallenges } from '../components/CompletedChallenges';
 import { Countdown } from '../components/Countdown';
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from '../components/Profile';
-import { ChallengesProvider } from '../contexts/ChallengesContext';
+
 import { CountdownProvider } from '../contexts/CountdownContext';
+import { Sidebar } from '../components/Sidebar';
 
 import styles from '../styles/pages/Home.module.css'
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
-interface HomeProps {
-    level: number
-    currentExperience: number
-    completedChallenges: number
-}
-
-export default function Home(props: HomeProps) {
-    console.log(props);
+export default function Home() {
+    const { isLevelUpModalOpen } = useContext(UserContext);
+    
     return (
-        <ChallengesProvider
-            level={props.level}
-            currentExperience={props.currentExperience}
-            completedChallenges={props.completedChallenges}
-        >
+        <div className={styles.homeContainer} style={{
+            filter: isLevelUpModalOpen ? 'blur(3px)' : 'none'
+        }}>
+            <Sidebar />
             <div className={styles.container}>
                 <Head>
                     <title>Início | move.it</title>
@@ -45,18 +41,6 @@ export default function Home(props: HomeProps) {
                     </section>
                 </CountdownProvider>
             </div>
-        </ChallengesProvider>
+        </div>
     )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const { level, currentExperience, completedChallenges } = ctx.req.cookies;
-    
-    return {
-        props: {
-            level: Number(level),
-            currentExperience: Number(currentExperience),
-            completedChallenges: Number(completedChallenges)
-        }
-    }
 }

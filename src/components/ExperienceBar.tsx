@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { ChallengesContext } from '../contexts/ChallengesContext';
+import { UserContext } from '../contexts/UserContext';
 import styles from '../styles/components/ExperienceBar.module.css';
 
 export function ExperienceBar() {
-    const { currentExperience, experienceToNextLevel } = useContext(ChallengesContext);
+    const { currentExperience, experienceToNextLevel } = useContext(UserContext);
 
-    const percentToNextLevel = Math.round(currentExperience * 100) / experienceToNextLevel;
+    const percentToNextLevel = Math.round(currentExperience * 100) / experienceToNextLevel || 0;
     
     return (
         <header className={styles.experienceBar}>

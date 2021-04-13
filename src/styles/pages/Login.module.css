@@ -1,0 +1,11 @@
+.loginContainer {
+    align-items: center;
+    background-color: var(--blue);
+    background-image: url(/images/simbol-login.svg);
+    background-position-x: left;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100vh;
+}
