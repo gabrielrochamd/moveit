@@ -34,7 +34,6 @@ interface UserContextData {
     id: string
     image: string
     isLevelUpModalOpen: boolean
-    isSharingOnTwitter: boolean
     level: number
     name: string
     users: User[]
@@ -66,12 +65,16 @@ export function UserProvider({
     const [totalExperience, setTotalExperience] = useState(0);
     const [users, setUsers] = useState([]);
     
+    const [initCompletedChallenges, setInitCompletedChallenges] = useState(0);
+    const [initCurrentExperience, setInitCurrentExperience] = useState(0);
+    const [initLevel, setInitLevel] = useState(1);
+    const [initTotalExperience, setInitTotalExperience] = useState(0);
+    
     const router = useRouter();
-    const [session, loading] = useSession();
+    const [session] = useSession();
 
     const [activeChallenge, setActiveChallenge] = useState(null);
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
-    const [isSharingOnTwitter, setIsSharingOnTwitter] = useState(false);
 
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -141,9 +144,13 @@ export function UserProvider({
 
     function readUser() {
         axios.post('/api/db/readUser', { email: session.user.email }).then((response) => {
-            console.log(response.data);
             const d = response.data;
             if (d !== '') {
+                setInitCompletedChallenges(d.completedChallenges);
+                setInitCurrentExperience(d.currentExperience);
+                setInitLevel(d.level);
+                setInitTotalExperience(d.totalExperience);
+                
                 setCompletedChallenges(d.completedChallenges);
                 setCurrentExperience(d.currentExperience);
                 setEmail(d.email);
@@ -187,8 +194,6 @@ export function UserProvider({
     }, []);
 
     useEffect(() => {
-        console.log(session);
-
         if (!session) {
             router.push('/login');
         } else {
@@ -200,11 +205,14 @@ export function UserProvider({
     }, [session]);
 
     useEffect(() => {
-        console.log(users);
-    }, [users]);
-
-    useEffect(() => {
-        updateUser();
+        if (
+            completedChallenges !== initCompletedChallenges ||
+            currentExperience !== initCurrentExperience ||
+            level !== initLevel ||
+            totalExperience !== initTotalExperience
+        ) {
+            updateUser();
+        }
     }, [completedChallenges, currentExperience, level, totalExperience]);
     
     return (
@@ -217,7 +225,6 @@ export function UserProvider({
             id,
             image,
             isLevelUpModalOpen,
-            isSharingOnTwitter,
             level,
             name,
             users,
