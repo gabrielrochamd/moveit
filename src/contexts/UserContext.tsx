@@ -206,10 +206,20 @@ export function UserProvider({
 
     useEffect(() => {
         if (
-            completedChallenges !== initCompletedChallenges ||
-            currentExperience !== initCurrentExperience ||
-            level !== initLevel ||
-            totalExperience !== initTotalExperience
+            // Se todos os valores atuais forem maiores ou iguais aos valores iniciais correspondentes
+            (
+                completedChallenges >= initCompletedChallenges &&
+                currentExperience >= initCurrentExperience &&
+                level >= initLevel &&
+                totalExperience >= initTotalExperience
+            ) &&
+            // Se pelo menos um dos valores for maior que o valor inicial correspondente
+            (
+                completedChallenges > initCompletedChallenges ||
+                currentExperience > initCurrentExperience ||
+                level > initLevel ||
+                totalExperience > initTotalExperience
+            )
         ) {
             updateUser();
         }
